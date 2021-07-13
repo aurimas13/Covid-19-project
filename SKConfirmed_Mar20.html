@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_57fd277525f54141a2f99b47f28f8599 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+</head>
+<body>    
+    
+        <div style="position: fixed; bottom: 300px; left: 50px; width: 160px; height: 110px; 
+                    background-color: white; border:2px solid grey; z-index:9999; font-size:14px;"
+                    >&nbsp; <b>Legend</b> <br>
+                    &nbsp; Confirmed < 100 &nbsp&nbsp&nbsp; 
+                        <i class="fa fa-circle" style="font-size:14px;color:#ff9900"></i><br>
+                    &nbsp; Confirmed < 1000 &nbsp; 
+                        <i class="fa fa-circle" style="font-size:14px;color:#cc33ff"></i><br>
+                    &nbsp; Confirmed < 3000 &nbsp; 
+                        <i class="fa fa-circle" style="font-size:14px;color:#ff0000"></i><br>
+                    &nbsp; Confirmed >= 3000
+                        <i class="fa fa-circle" style="font-size:14px;color:#660000"></i>
+        </div>
+        
+    
+            <div class="folium-map" id="map_57fd277525f54141a2f99b47f28f8599" ></div>
+        
+</body>
+<script>    
+    
+            var map_57fd277525f54141a2f99b47f28f8599 = L.map(
+                "map_57fd277525f54141a2f99b47f28f8599",
+                {
+                    center: [35.7982008, 125.6296572],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_57fd277525f54141a2f99b47f28f8599);
+
+            
+
+        
+    
+            var tile_layer_b5b1c09b80544570b604f2de91169206 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var tile_layer_c0517ce5493140b6aedaecede49f5b98 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var tile_layer_c3003534347f4587aeee3074b78290e0 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var tile_layer_cb8178734c9c444d89b0f7bdf7b9878d = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var tile_layer_cdd71ba8e43d4b348060e513ec6e232a = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var tile_layer_274a1d0e299b49c88b74122727ade72a = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var layer_control_ef64bfbe32764b35b71b24f4451c9ec0 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c0517ce5493140b6aedaecede49f5b98,
+                    "Positron" : tile_layer_c3003534347f4587aeee3074b78290e0,
+                    "Dark Matter" : tile_layer_cb8178734c9c444d89b0f7bdf7b9878d,
+                    "Terrain" : tile_layer_cdd71ba8e43d4b348060e513ec6e232a,
+                    "Toner" : tile_layer_274a1d0e299b49c88b74122727ade72a,
+                },
+                overlays :  {
+                },
+            };
+            L.control.layers(
+                layer_control_ef64bfbe32764b35b71b24f4451c9ec0.base_layers,
+                layer_control_ef64bfbe32764b35b71b24f4451c9ec0.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+            tile_layer_c3003534347f4587aeee3074b78290e0.remove();
+            tile_layer_cb8178734c9c444d89b0f7bdf7b9878d.remove();
+            tile_layer_cdd71ba8e43d4b348060e513ec6e232a.remove();
+            tile_layer_274a1d0e299b49c88b74122727ade72a.remove();
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": true, "position": "topleft", "title": "Expand", "titleCancel": "Exit"}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+            var circle_marker_274993819b934a2bb18fcf16c77a879a = L.circleMarker(
+                [37.566953000000005, 126.977977],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_a54beed781d444029b3a270812ab3528 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3154e1dd6a6d48f5aff34577b2926582 = $(`<div id="html_3154e1dd6a6d48f5aff34577b2926582" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Seoul<br><b>Confirmed:</b> 1312<br><b>Deceased: </b>7</div>`)[0];
+            popup_a54beed781d444029b3a270812ab3528.setContent(html_3154e1dd6a6d48f5aff34577b2926582);
+        
+
+        circle_marker_274993819b934a2bb18fcf16c77a879a.bindPopup(popup_a54beed781d444029b3a270812ab3528)
+        ;
+
+        
+    
+    
+            var circle_marker_536e668d965547aea065d500519504a3 = L.circleMarker(
+                [35.179884, 129.074796],
+                {"bubblingMouseEvents": true, "color": "#cc33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc33ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 15.4, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_c36fb170f7f74894afefc50caf283a5c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_aef3c85fcb0648a192853f7886d20737 = $(`<div id="html_aef3c85fcb0648a192853f7886d20737" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Busan<br><b>Confirmed:</b> 154<br><b>Deceased: </b>3</div>`)[0];
+            popup_c36fb170f7f74894afefc50caf283a5c.setContent(html_aef3c85fcb0648a192853f7886d20737);
+        
+
+        circle_marker_536e668d965547aea065d500519504a3.bindPopup(popup_c36fb170f7f74894afefc50caf283a5c)
+        ;
+
+        
+    
+    
+            var circle_marker_12110f9f85484d1bab84f814cdf4b3df = L.circleMarker(
+                [35.87215, 128.601783],
+                {"bubblingMouseEvents": true, "color": "#660000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#660000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 35, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_50f162f6e8b74f78bfda644e3610eb14 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_54a8342b6bbe4826bff94e72ccb3a581 = $(`<div id="html_54a8342b6bbe4826bff94e72ccb3a581" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Daegu<br><b>Confirmed:</b> 6906<br><b>Deceased: </b>189</div>`)[0];
+            popup_50f162f6e8b74f78bfda644e3610eb14.setContent(html_54a8342b6bbe4826bff94e72ccb3a581);
+        
+
+        circle_marker_12110f9f85484d1bab84f814cdf4b3df.bindPopup(popup_50f162f6e8b74f78bfda644e3610eb14)
+        ;
+
+        
+    
+    
+            var circle_marker_27eb39a2231c4509a4f059685d0541ca = L.circleMarker(
+                [37.456188, 126.70591999999999],
+                {"bubblingMouseEvents": true, "color": "#cc33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc33ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 20, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_c50ceabdd04d4984afb977f3686dfe92 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d652b2570a264b77a6f897d9fe6abbb2 = $(`<div id="html_d652b2570a264b77a6f897d9fe6abbb2" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Incheon<br><b>Confirmed:</b> 341<br><b>Deceased: </b>1</div>`)[0];
+            popup_c50ceabdd04d4984afb977f3686dfe92.setContent(html_d652b2570a264b77a6f897d9fe6abbb2);
+        
+
+        circle_marker_27eb39a2231c4509a4f059685d0541ca.bindPopup(popup_c50ceabdd04d4984afb977f3686dfe92)
+        ;
+
+        
+    
+    
+            var circle_marker_522e27bbc7c24a0f8081d0b2c07e5c43 = L.circleMarker(
+                [35.160467, 126.85139199999999],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 4.4, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_9e97e4d9313546b1acfb43cf032faf14 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_df4aeca1fa184b8484759f757db841ac = $(`<div id="html_df4aeca1fa184b8484759f757db841ac" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Gwangju<br><b>Confirmed:</b> 44<br><b>Deceased: </b>0</div>`)[0];
+            popup_9e97e4d9313546b1acfb43cf032faf14.setContent(html_df4aeca1fa184b8484759f757db841ac);
+        
+
+        circle_marker_522e27bbc7c24a0f8081d0b2c07e5c43.bindPopup(popup_9e97e4d9313546b1acfb43cf032faf14)
+        ;
+
+        
+    
+    
+            var circle_marker_5babf19907a2499fa80359c2cec5a899 = L.circleMarker(
+                [36.350621000000004, 127.384744],
+                {"bubblingMouseEvents": true, "color": "#cc33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc33ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 11.7, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_5de50db7ba834021851ccbb6dca949f7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_28d2874f5fa44d1485c23237ec2bd54d = $(`<div id="html_28d2874f5fa44d1485c23237ec2bd54d" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Daejeon<br><b>Confirmed:</b> 117<br><b>Deceased: </b>1</div>`)[0];
+            popup_5de50db7ba834021851ccbb6dca949f7.setContent(html_28d2874f5fa44d1485c23237ec2bd54d);
+        
+
+        circle_marker_5babf19907a2499fa80359c2cec5a899.bindPopup(popup_5de50db7ba834021851ccbb6dca949f7)
+        ;
+
+        
+    
+    
+            var circle_marker_1cffb53e04c34c6cb1b155aaa946ee23 = L.circleMarker(
+                [35.539797, 129.31153799999998],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 5.5, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_e23a1d3b4e184c59923ee232a801b605 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7852bac0a64b409aa7121165d98e26ff = $(`<div id="html_7852bac0a64b409aa7121165d98e26ff" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Ulsan<br><b>Confirmed:</b> 55<br><b>Deceased: </b>1</div>`)[0];
+            popup_e23a1d3b4e184c59923ee232a801b605.setContent(html_7852bac0a64b409aa7121165d98e26ff);
+        
+
+        circle_marker_1cffb53e04c34c6cb1b155aaa946ee23.bindPopup(popup_e23a1d3b4e184c59923ee232a801b605)
+        ;
+
+        
+    
+    
+            var circle_marker_e87c167ae66a49b5b74efbc23199321e = L.circleMarker(
+                [36.480132, 127.28902099999999],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 5.0, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_d5d5cfe9d3ac44a78246a7c25557d31a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_db71e10b9c784878b034a84bc24f9dec = $(`<div id="html_db71e10b9c784878b034a84bc24f9dec" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Sejong<br><b>Confirmed:</b> 50<br><b>Deceased: </b>0</div>`)[0];
+            popup_d5d5cfe9d3ac44a78246a7c25557d31a.setContent(html_db71e10b9c784878b034a84bc24f9dec);
+        
+
+        circle_marker_e87c167ae66a49b5b74efbc23199321e.bindPopup(popup_d5d5cfe9d3ac44a78246a7c25557d31a)
+        ;
+
+        
+    
+    
+            var circle_marker_0bdb4f22072b4e41ad35ac68ace4a5a5 = L.circleMarker(
+                [37.275119000000004, 127.00946599999999],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_4f831baeae764a9f8827bf3ae8629c73 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_618aaab14a4e4362bc0c4195528986ba = $(`<div id="html_618aaab14a4e4362bc0c4195528986ba" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Gyeonggi-do<br><b>Confirmed:</b> 1207<br><b>Deceased: </b>23</div>`)[0];
+            popup_4f831baeae764a9f8827bf3ae8629c73.setContent(html_618aaab14a4e4362bc0c4195528986ba);
+        
+
+        circle_marker_0bdb4f22072b4e41ad35ac68ace4a5a5.bindPopup(popup_4f831baeae764a9f8827bf3ae8629c73)
+        ;
+
+        
+    
+    
+            var circle_marker_62bb0217f6d34ce78f64f33de95b286e = L.circleMarker(
+                [37.885369, 127.729868],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 6.5, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_47c501b537af4eb68b6a0776dc62b901 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2acf2f615f3a4ee081e574a10a4b4b88 = $(`<div id="html_2acf2f615f3a4ee081e574a10a4b4b88" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Gangwon-do<br><b>Confirmed:</b> 65<br><b>Deceased: </b>3</div>`)[0];
+            popup_47c501b537af4eb68b6a0776dc62b901.setContent(html_2acf2f615f3a4ee081e574a10a4b4b88);
+        
+
+        circle_marker_62bb0217f6d34ce78f64f33de95b286e.bindPopup(popup_47c501b537af4eb68b6a0776dc62b901)
+        ;
+
+        
+    
+    
+            var circle_marker_c0eef5a761754943a45832274481f62e = L.circleMarker(
+                [36.63568, 127.49138400000001],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 6.5, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_f4f1cbe299a845be86a18ad1ec5f7218 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6f7961ea07504e3cae9d47c7bab585ce = $(`<div id="html_6f7961ea07504e3cae9d47c7bab585ce" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Chungcheongbuk-do<br><b>Confirmed:</b> 65<br><b>Deceased: </b>0</div>`)[0];
+            popup_f4f1cbe299a845be86a18ad1ec5f7218.setContent(html_6f7961ea07504e3cae9d47c7bab585ce);
+        
+
+        circle_marker_c0eef5a761754943a45832274481f62e.bindPopup(popup_f4f1cbe299a845be86a18ad1ec5f7218)
+        ;
+
+        
+    
+    
+            var circle_marker_72de90e0079a4fba92bf70b8d5856d80 = L.circleMarker(
+                [36.658976, 126.673318],
+                {"bubblingMouseEvents": true, "color": "#cc33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc33ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 16.7, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_7e28e4635f4241b0954f6d9ae2599bed = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ca89a64573954a46862391c1090377c5 = $(`<div id="html_ca89a64573954a46862391c1090377c5" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Chungcheongnam-do<br><b>Confirmed:</b> 167<br><b>Deceased: </b>0</div>`)[0];
+            popup_7e28e4635f4241b0954f6d9ae2599bed.setContent(html_ca89a64573954a46862391c1090377c5);
+        
+
+        circle_marker_72de90e0079a4fba92bf70b8d5856d80.bindPopup(popup_7e28e4635f4241b0954f6d9ae2599bed)
+        ;
+
+        
+    
+    
+            var circle_marker_f588cfe4908644c6901e0be8f76618f9 = L.circleMarker(
+                [35.820308000000004, 127.108791],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 2.7, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_c376be98ef284a47b9dd90e09d1b240b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_23b82fea8421403e9fd828f703935355 = $(`<div id="html_23b82fea8421403e9fd828f703935355" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Jeollabuk-do<br><b>Confirmed:</b> 27<br><b>Deceased: </b>0</div>`)[0];
+            popup_c376be98ef284a47b9dd90e09d1b240b.setContent(html_23b82fea8421403e9fd828f703935355);
+        
+
+        circle_marker_f588cfe4908644c6901e0be8f76618f9.bindPopup(popup_c376be98ef284a47b9dd90e09d1b240b)
+        ;
+
+        
+    
+    
+            var circle_marker_e00742036315498e9af242b5c2b6d63d = L.circleMarker(
+                [34.816095000000004, 126.463021],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 2.4, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_3f9613a11828497db172b13414c0b2de = L.popup({"maxWidth": "100%"});
+
+        
+            var html_64f348d5252d4b68a74d7ed63e1fe3a9 = $(`<div id="html_64f348d5252d4b68a74d7ed63e1fe3a9" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Jeollanam-do<br><b>Confirmed:</b> 24<br><b>Deceased: </b>0</div>`)[0];
+            popup_3f9613a11828497db172b13414c0b2de.setContent(html_64f348d5252d4b68a74d7ed63e1fe3a9);
+        
+
+        circle_marker_e00742036315498e9af242b5c2b6d63d.bindPopup(popup_3f9613a11828497db172b13414c0b2de)
+        ;
+
+        
+    
+    
+            var circle_marker_81fab56cc13a4da1a45e9443e581a03a = L.circleMarker(
+                [36.576032, 128.505599],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_9c1785bb3839410d9300a40b64406bc7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ba9d396617194f0fa9e0a91439ad0246 = $(`<div id="html_ba9d396617194f0fa9e0a91439ad0246" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Gyeongsangbuk-do<br><b>Confirmed:</b> 1389<br><b>Deceased: </b>54</div>`)[0];
+            popup_9c1785bb3839410d9300a40b64406bc7.setContent(html_ba9d396617194f0fa9e0a91439ad0246);
+        
+
+        circle_marker_81fab56cc13a4da1a45e9443e581a03a.bindPopup(popup_9c1785bb3839410d9300a40b64406bc7)
+        ;
+
+        
+    
+    
+            var circle_marker_1bb2db2c87e74f58a60f2538f74b9332 = L.circleMarker(
+                [35.238294, 128.692397],
+                {"bubblingMouseEvents": true, "color": "#cc33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc33ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 13.4, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_a5b10c22043444959efe401a4856721f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7231eeedaeed4928a61df0538e02c6ff = $(`<div id="html_7231eeedaeed4928a61df0538e02c6ff" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Gyeongsangnam-do<br><b>Confirmed:</b> 134<br><b>Deceased: </b>0</div>`)[0];
+            popup_a5b10c22043444959efe401a4856721f.setContent(html_7231eeedaeed4928a61df0538e02c6ff);
+        
+
+        circle_marker_1bb2db2c87e74f58a60f2538f74b9332.bindPopup(popup_a5b10c22043444959efe401a4856721f)
+        ;
+
+        
+    
+    
+            var circle_marker_410679fe93dd488f97b6a8e2361f1bae = L.circleMarker(
+                [33.488935999999995, 126.500423],
+                {"bubblingMouseEvents": true, "color": "#ff9900", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9900", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 4.0, "radius": 1.9, "stroke": true, "weight": 3}
+            ).addTo(map_57fd277525f54141a2f99b47f28f8599);
+        
+    
+        var popup_f9568a3663624704b3181b857856d7ef = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8d22beb5d0fe4ab5bc8d3086d21178af = $(`<div id="html_8d22beb5d0fe4ab5bc8d3086d21178af" style="width: 100.0%; height: 100.0%;"><b>Date:</b> 2020-06-30<br><b>Province: </b>Jeju-do<br><b>Confirmed:</b> 19<br><b>Deceased: </b>0</div>`)[0];
+            popup_f9568a3663624704b3181b857856d7ef.setContent(html_8d22beb5d0fe4ab5bc8d3086d21178af);
+        
+
+        circle_marker_410679fe93dd488f97b6a8e2361f1bae.bindPopup(popup_f9568a3663624704b3181b857856d7ef)
+        ;
+
+        
+    
+</script>
