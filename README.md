@@ -1,5 +1,5 @@
 <p align=center>
-  <img height="333px" src=https://github.com/aurimas13/Covid-19-project/blob/main/images/covid-19-check.jpg"/>
+  <img height="333px" src="https://github.com/aurimas13/Covid-19-project/blob/main/images/covid-19-check.jpg"/>
 </p>
 <p align="center" > <b>Covid-19</b> project </p>
 <br>
